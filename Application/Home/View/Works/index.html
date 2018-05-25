@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>我</title>
+		<link href="{$Think.const.WEB_STYLE}/home/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="{$Think.const.WEB_STYLE}/home/assets/layui/css/layui.mobile.css" rel="stylesheet"/>
+		<link href="{$Think.const.WEB_STYLE}/home/assets/dropload/css/dropload.css" rel="stylesheet"/>
+		<link href="{$Think.const.WEB_STYLE}/home/css/vote.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<!-- 导航 -->
+		<nav class="navbar navbar-fixed-top vote">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#vote-nav">
+						<span class="sr-only">toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="index.html" class="navbar-brand">投票点赞系统</a>
+				</div>
+				<div id="vote-nav" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="publish-activity.html">创建投票</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		
+		<!-- 内容 -->
+		<div class="container my-works" id="my-activity" style="margin-bottom:50px;">
+			<a href="{:U('works/add',array('aid'=>$_GET['aid'],'cid'=>$_GET['cid']),'',true)}" class="btn btn-blue btn-block" style="margin-bottom:15px;">新增作品/选手资料</a>
+			<div class="activity-list" data-page="2">
+				<foreach name="works" item="wk">
+				<div class="activity-item">
+					<div class="activity-title media">
+						<a href="#">
+							<div class="media-left">
+								<img class="img-responsive" src="{$Think.const.WEB_STYLE}/{$wk['images']|json_decode=###,true|array_shift}"/>
+							</div>
+							<div class="media-body">
+								<p>编号:{$wk.id}<span class="pull-right text-pink">好评{$wk.likes}</span></p>
+								<p>标题:{$wk.title}</p>
+								<p>电话:{$wk.telephone}</p>
+								<p>单位:{$wk.company}</p>
+								<p>地址:{$wk.province}{$wk.city}</p>
+							</div>
+						</a>
+					</div>
+					<div class="works-manage">
+						<a href="#"><i class="glyphicon glyphicon-thumbs-up active"></i>(<span class="thumbs-up-count">{$wk.likes}</span>)</a><a href="{:U('works/add',array('aid'=>$wk['aid'],'wid'=>$wk['id']))}">编辑</a><a href="javascript:;" class="del" data-id="{$wk.id}">删除</a>
+					</div>
+				</div>
+				</foreach>
+			</div>
+		</div>
+		<include file="Public/footer"/>
+		<script type="text/javascript" src="{$Think.const.WEB_STYLE}/home/js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="{$Think.const.WEB_STYLE}/home/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="{$Think.const.WEB_STYLE}/home/assets/layui/layui.all.js"></script>
+		<script type="text/javascript" src="{$Think.const.WEB_STYLE}/home/assets/qrcode/qrcode.min.js"></script>
+		<script type="text/javascript" src="{$Think.const.WEB_STYLE}/home/assets/dropload/js/dropload.js"></script>
+		<script type="text/javascript">var delurl="{:U('works/del','','',true)}";</script>
+		<script type="text/javascript" src="{$Think.const.WEB_STYLE}/home/js/vote.js"></script>
+		<script type="text/javascript">
+			//下拉加载更多活动
+			$(".my-works").dropload({
+				scrollArea: window,
+				loadDownFn: function(me){
+					$.ajax({
+						url:'works.php',
+						type:'post',
+						data:{p:$(".activity-list").attr("data-page")},
+						dataType: 'json',
+						success: function(res){
+							$(".activity-list").attr("data-page",res.p);
+							if(res.msg==''){
+								me.lock();
+								me.noData();
+							}else{
+								$(".activity-list").append(res.msg);
+							}
+							me.resetload();
+						},
+						error: function(xhr, type){
+							layer.msg('Ajax error!',{time:1000},function(){
+								// 即使加载出错，也得重置
+								me.resetload();
+							});
+						}
+					});
+				}
+			});
+		</script>
+	</body>
+</html>

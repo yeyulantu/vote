@@ -1,0 +1,242 @@
+@charset="utf-8";
+
+body{
+	background-color:#eee;
+}
+.btn-blue{
+	background-color:#107ad4;
+	border-color:#107af4;
+	color:#fff;
+}
+.btn-blue:focus,.btn-blue:hover{
+	background-color:#107af4;
+	border-color:#107af4;
+	color:#fff;
+}
+.vote{
+	border-bottom:1px solid #e7e7e7;
+	box-shadow:0 3px 3px #e7e7e7;
+	background-color:#fff;
+}
+.vote .icon-bar{
+	background-color:#7dcac1;;
+}
+.vote .navbar-collapse{
+	border-top-color:#e7e7e7;
+}
+.vote ul.nav{
+	margin-top:0;
+	margin-bottom:0;
+}
+
+#activity-form,#works-form,#vote-set,#enroll-set-form,#my-activity{
+	margin-top:70px;
+}
+#activity-form .form-group,#works-form .form-group,#vote-set .form-group,#enroll-set-form .form-group{
+	display:grid;
+}
+#enroll-set-form .form-group{
+	background-color:#fff;
+	padding-bottom:5px;
+}
+#activity-form .title,#works-form .title,#vote-set .title,#enroll-set-form .title{
+	padding:0px 0 5px;
+	display: inline-flex;
+}
+#works-form textarea.form-control{
+	height:120px;
+}
+
+.img-list img{
+	border:1px solid #e7e7e7;
+	width:50px;
+	height:50px;
+	border-radius:3px;
+	box-shadow:0 0 1px #c7c7c7;
+}
+.img-list img.active{
+	border:1px solid #c00;
+}
+.img-list .upload-img{
+	display:inline-block;
+	border:1px solid #d7d7d7;
+	width:50px;
+	height:50px;
+	border-radius:3px;
+	text-align:center;
+	line-height:50px;
+	color: #c2c2c2;
+    font-size: 40px;
+}
+#works-form{
+	margin-bottom:50px;
+}
+
+
+/* 活动列表 */
+.activity-list .activity-item{
+	background-color:#fff;
+	padding:5px 15px;
+	border-radius:3px;
+	margin-bottom:10px;
+}
+.activity-title{
+	padding:8px 0 12px;
+}
+.activity-title p{
+	/* text-indent:20px; */
+	max-height:60px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	font-size:12px;
+	padding-bottom:3px;
+	white-space:nowrap;
+	max-width:95%;
+}
+.activity-manage a,.activity-info a,.works-manage a{
+	color:#222;
+	display:inline-block;
+	text-align:center;
+	font-size:13px;
+	text-decoration:none;
+}
+.activity-info a{
+	width:50%;
+}
+.works-manage a{
+	width:33.33333%;
+}
+.activity-manage,.activity-info,.works-manage{
+	padding:5px 0;
+	border-top:1px solid #e7e7e7;
+}
+.activity-manage a:nth-child(1){
+	width:20%;
+}
+.activity-manage a:nth-child(2){
+	width:20%;
+	border-left:1px solid #e7e7e7;
+}
+.activity-manage a:nth-child(3){
+	width:45%;
+	border-left:1px solid #e7e7e7;
+}
+.activity-manage a:nth-child(4){
+	width:15%;
+	border-left:1px solid #e7e7e7;
+}
+.activity-info a:nth-child(1){
+	border-right:1px solid #e7e7e7;
+}
+.activity-info .glyphicon-thumbs-up{
+	padding-right:8px;
+}
+.glyphicon-thumbs-up.active{
+	color:pink;
+}
+.works-manage a:nth-child(2){
+	border-left:1px solid #e7e7e7;
+	border-right:1px solid #e7e7e7;
+}
+/* 作品列表样式 */
+.media .media-left{
+	width:40%;
+	overflow:hidden;
+}
+.media>a{
+	color:#333;
+	text-decoration:none;
+}
+
+/* 弹出框样式 */
+#qrcodeCanvas{
+	padding:15px;
+}
+#qrcodeCanvas img{
+	width:100%;
+}
+/* 数据统计 */
+.level-header-title{
+	border-bottom:1px solid #0c96cf;
+	margin-bottom:10px;
+}
+.level-header-title>span{
+	background-color:#0c96cf;
+	color:#fff;
+	padding:8px 10px;
+	position:relative;
+	top:-5px;
+	border-radius:12px 12px 0 0;
+	font-size:14px;
+}
+.table-bordered{
+	background-color:#fff;
+}
+
+/* 分页 */
+.page{
+	text-align:center;
+}
+.page a,.page .current{
+	display:inline-block;
+	padding:6px;
+	border:1px solid #e3e3e3;
+	min-width:31px;
+	font-size:12px;
+	text-decoration:none;
+}
+.page .current{
+	background-color:#0c96cf;
+	border:1px solid #0c96cf;
+	color:#fff;
+}
+
+/* 作品展示 */
+.works-content{
+	background-color:#fff;
+	color:#222;
+	padding:15px 10px;
+	font-size:0.8rem;
+	box-shadow:0 0 1px #cfcfcf inset;
+}
+.works-no-likes .btn-default{
+	font-size:0.8rem;
+}
+.works-no-likes .works-likes{
+	position:relative;
+	top:8px;
+	margin-right:12px;
+}
+.works-main-content{
+	margin-top:15px;
+}
+.works-main-content>p{
+	font-weight:bold;
+}
+.works-main-content .works-des-img{
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.works-main-content .works-des-img img{
+	border-radius:3px;
+	margin:5px 0;
+}
+/* 底部导航 */
+.footer-nav{
+	text-align:center;
+}
+.vote-footer-nav{
+	border-top:1px solid #e7e7e7;
+	box-shadow:0 0px 3px #e7e7e7;
+	padding-top:5px;
+	padding-bottom:5px;
+	background-color:#fff;
+}
+
+/* 增加一些公用样式 */
+.text-pink{
+	color:#de006e;
+}
+.border-pink{
+	border-color:#de006e;
+}
